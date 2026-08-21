@@ -17,14 +17,14 @@ export default function Carousel() {
             'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
         }}
       >
-        <div className="carousel-track flex w-max gap-6">
+        <div className="carousel-track flex w-max">
           {track.map((src, i) => (
             <img
               key={i}
               src={src}
               alt="JB Imóveis"
               draggable={false}
-              className="h-56 w-auto shrink-0 select-none rounded-2xl object-cover shadow-lg sm:h-72 md:h-96"
+              className="mr-6 h-56 w-auto shrink-0 select-none rounded-2xl object-cover shadow-lg sm:h-72 md:h-96"
             />
           ))}
         </div>
