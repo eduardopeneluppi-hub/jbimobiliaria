@@ -1,16 +1,25 @@
-# React + Vite
+# JB Imóveis
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Site institucional da JB Imóveis (CRECI J28595) — imobiliária de São José dos Campos, Taubaté e Jacareí.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React + Vite
+- Tailwind CSS v4
+- Framer Motion
 
-## React Compiler
+## Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Tela de intro animada
+- Navbar flutuante com efeito glassmorphism
+- Carrossel de banners em loop contínuo
+- Filtro de bairro/cidade com busca (ignora acentos, também busca por título/descrição do imóvel)
+- Grade de imóveis com modal de detalhes em tela cheia
+- Integração direta com WhatsApp (mensagem pré-preenchida) e Google Maps
 
-## Expanding the Oxlint configuration
+## Rodando localmente
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```bash
+npm install
+npm run dev
+```
