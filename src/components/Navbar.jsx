@@ -9,6 +9,13 @@ const links = [
   { label: 'Contato', href: '#contato' },
 ]
 
+function scrollToId(id) {
+  return (e) => {
+    e.preventDefault()
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
+
 export default function Navbar() {
   const [open, setOpen] = useState(false)
 
@@ -35,7 +42,11 @@ export default function Navbar() {
           <ul className="hidden items-center gap-7 text-sm font-medium text-white/85 sm:flex">
             {links.map((l) => (
               <li key={l.href}>
-                <a href={l.href} className="transition-colors hover:text-orange-400">
+                <a
+                  href={l.href}
+                  onClick={l.href === '#contato' ? scrollToId('contato') : undefined}
+                  className="transition-colors hover:text-orange-400"
+                >
                   {l.label}
                 </a>
               </li>
@@ -44,6 +55,7 @@ export default function Navbar() {
 
           <a
             href="#contato"
+            onClick={scrollToId('contato')}
             className="hidden shrink-0 rounded-full bg-orange-500 px-4 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400 sm:inline-block"
           >
             Fale conosco
@@ -84,7 +96,10 @@ export default function Navbar() {
                   <li key={l.href}>
                     <a
                       href={l.href}
-                      onClick={() => setOpen(false)}
+                      onClick={(e) => {
+                        setOpen(false)
+                        if (l.href === '#contato') scrollToId('contato')(e)
+                      }}
                       className="block rounded-xl px-3 py-2 text-white/90 transition-colors hover:bg-white/10"
                     >
                       {l.label}
@@ -94,7 +109,10 @@ export default function Navbar() {
                 <li>
                   <a
                     href="#contato"
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => {
+                      setOpen(false)
+                      scrollToId('contato')(e)
+                    }}
                     className="mt-2 block rounded-full bg-orange-500 px-4 py-2 text-center text-sm font-semibold text-white"
                   >
                     Fale conosco
