@@ -26,11 +26,6 @@ body {
     animation-duration: 70s;
   }
 }
-@media (hover: hover) {
-  .carousel-track:hover {
-    animation-play-state: paused;
-  }
-}
 
 @keyframes aurora-blob-1 {
   0%, 100% { transform: translate(-10%, -20%) scale(1); }
