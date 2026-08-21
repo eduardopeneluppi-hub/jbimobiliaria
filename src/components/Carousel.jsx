@@ -1,11 +1,30 @@
+import { useRef } from 'react'
+import { motion, useMotionValue, useAnimationFrame } from 'framer-motion'
 import img1 from '../assets/carousel-1.png'
 import img2 from '../assets/carousel-2.png'
 import img3 from '../assets/carousel-3.png'
 
 const slides = [img1, img2, img3]
 const track = [...slides, ...slides]
+const SPEED = 45 // pixels per second
 
 export default function Carousel() {
+  const trackRef = useRef(null)
+  const offset = useRef(0)
+  const x = useMotionValue(0)
+
+  useAnimationFrame((_, delta) => {
+    const el = trackRef.current
+    if (!el) return
+    const halfWidth = el.scrollWidth / 2
+    if (!halfWidth) return
+
+    offset.current -= (SPEED * delta) / 1000
+    if (offset.current <= -halfWidth) offset.current += halfWidth
+
+    x.set(offset.current)
+  })
+
   return (
     <section className="w-full bg-neutral-50 pb-16 pt-28 sm:pt-32">
       <div
@@ -17,7 +36,7 @@ export default function Carousel() {
             'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
         }}
       >
-        <div className="carousel-track flex w-max">
+        <motion.div ref={trackRef} style={{ x }} className="flex w-max">
           {track.map((src, i) => (
             <img
               key={i}
@@ -27,7 +46,7 @@ export default function Carousel() {
               className="mr-6 h-56 w-auto shrink-0 select-none rounded-2xl object-cover shadow-lg sm:h-72 md:h-96"
             />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

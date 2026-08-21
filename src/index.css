@@ -17,27 +17,6 @@ body {
   background: #ffffff;
 }
 
-@keyframes marquee {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-.carousel-track {
-  animation: marquee 50s linear infinite;
-  will-change: transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-@media (min-width: 640px) {
-  .carousel-track {
-    animation-duration: 70s;
-  }
-}
-
 @keyframes aurora-blob-1 {
   0%, 100% { transform: translate(-10%, -20%) scale(1); }
   50% { transform: translate(20%, 15%) scale(1.35); }
