@@ -5,6 +5,14 @@ html, body, #root {
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+#contato {
+  scroll-margin-top: 96px;
+}
+
 body {
   background: #ffffff;
 }
