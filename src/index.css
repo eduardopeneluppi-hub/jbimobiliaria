@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #ffffff;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes aurora-blob-1 {
+  0%, 100% { transform: translate(-10%, -20%) scale(1); }
+  50% { transform: translate(20%, 15%) scale(1.35); }
+}
+@keyframes aurora-blob-2 {
+  0%, 100% { transform: translate(15%, 10%) scale(1.1); }
+  50% { transform: translate(-20%, -20%) scale(0.85); }
+}
+@keyframes aurora-blob-3 {
+  0%, 100% { transform: translate(0%, 20%) scale(1); }
+  50% { transform: translate(-15%, -15%) scale(1.3); }
+}
+
+.aurora-glow {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora-glow__blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(36px);
+  opacity: 0.55;
+  will-change: transform;
+}
+.aurora-glow__blob--1 {
+  left: -15%;
+  top: -50%;
+  width: 55%;
+  height: 150%;
+  background: #fb923c;
+  animation: aurora-blob-1 2s ease-in-out infinite;
+}
+.aurora-glow__blob--2 {
+  right: -15%;
+  top: -55%;
+  width: 50%;
+  height: 150%;
+  background: #fcd34d;
+  animation: aurora-blob-2 2.5s ease-in-out infinite;
+}
+.aurora-glow__blob--3 {
+  left: 30%;
+  bottom: -70%;
+  width: 45%;
+  height: 150%;
+  background: #f97316;
+  animation: aurora-blob-3 3s ease-in-out infinite;
+}
