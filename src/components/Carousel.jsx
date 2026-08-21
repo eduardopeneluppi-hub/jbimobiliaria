@@ -17,7 +17,7 @@ export default function Carousel() {
             'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
         }}
       >
-        <div className="flex w-max animate-[marquee_40s_linear_infinite] gap-6 hover:[animation-play-state:paused]">
+        <div className="carousel-track flex w-max gap-6">
           {track.map((src, i) => (
             <img
               key={i}
