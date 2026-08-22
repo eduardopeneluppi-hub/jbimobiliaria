@@ -9,7 +9,6 @@ import PropertyGrid from './components/PropertyGrid'
 import CtaBanner from './components/CtaBanner'
 import ContactPill from './components/ContactPill'
 import { cities, cityNames } from './data/locations'
-import { properties } from './data/properties'
 import { normalize } from './utils/text'
 
 function App() {
@@ -22,22 +21,6 @@ function App() {
   function handleChangeCity(newCity) {
     setCity(newCity)
     setBairro(cities[newCity][0])
-  }
-
-  function handleSelectCategory(newCategory) {
-    setCategory(newCategory)
-    if (!newCategory) return
-
-    const hasMatchHere = properties.some(
-      (p) => p.city === city && p.bairro === bairro && p.type === newCategory
-    )
-    if (!hasMatchHere) {
-      const match = properties.find((p) => p.type === newCategory)
-      if (match) {
-        setCity(match.city)
-        setBairro(match.bairro)
-      }
-    }
   }
 
   useEffect(() => {
@@ -70,7 +53,7 @@ function App() {
         <>
           <Navbar />
           <Carousel />
-          <Categories selected={category} onSelect={handleSelectCategory} />
+          <Categories selected={category} onSelect={setCategory} />
           <LocationFilter
             city={city}
             bairro={bairro}

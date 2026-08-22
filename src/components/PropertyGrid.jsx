@@ -52,6 +52,12 @@ const areaIcon = (
   </svg>
 )
 
+const categoryLabels = {
+  predio: 'prédios',
+  casa: 'casas',
+  terreno: 'terrenos',
+}
+
 export default function PropertyGrid({ city, bairro, search = '', category = null }) {
   const query = normalize(search.trim())
   const isLocationMatch = query && (normalize(bairro).includes(query) || normalize(city).includes(query))
@@ -77,6 +83,8 @@ export default function PropertyGrid({ city, bairro, search = '', category = nul
             <div className="rounded-2xl border border-dashed border-neutral-200 py-16 text-center text-neutral-500">
               {query
                 ? `Nenhum imóvel encontrado para "${search}" em ${bairro}.`
+                : category
+                ? `Ainda não temos ${categoryLabels[category]} em ${bairro}, ${city}.`
                 : `Nenhum imóvel encontrado em ${bairro} ainda. Volte em breve!`}
             </div>
           ) : (
