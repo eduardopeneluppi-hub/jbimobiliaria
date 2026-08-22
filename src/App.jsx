@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Intro from './components/Intro'
 import Navbar from './components/Navbar'
 import Carousel from './components/Carousel'
+import Categories from './components/Categories'
 import LocationFilter from './components/LocationFilter'
 import SearchBox from './components/SearchBox'
 import PropertyGrid from './components/PropertyGrid'
@@ -51,6 +52,7 @@ function App() {
         <>
           <Navbar />
           <Carousel />
+          <Categories />
           <LocationFilter
             city={city}
             bairro={bairro}
