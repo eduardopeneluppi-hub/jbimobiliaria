@@ -52,11 +52,12 @@ const areaIcon = (
   </svg>
 )
 
-export default function PropertyGrid({ city, bairro, search = '' }) {
+export default function PropertyGrid({ city, bairro, search = '', category = null }) {
   const query = normalize(search.trim())
   const isLocationMatch = query && (normalize(bairro).includes(query) || normalize(city).includes(query))
   const filtered = properties.filter((p) => {
     if (p.city !== city || p.bairro !== bairro) return false
+    if (category && p.type !== category) return false
     if (!query || isLocationMatch) return true
     return normalize(p.title).includes(query) || normalize(p.description).includes(query)
   })
@@ -66,7 +67,7 @@ export default function PropertyGrid({ city, bairro, search = '' }) {
     <section className="mx-auto max-w-6xl px-4 pb-1 sm:pb-6">
       <AnimatePresence mode="wait">
         <motion.div
-          key={`${city}-${bairro}-${query}`}
+          key={`${city}-${bairro}-${query}-${category}`}
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -12 }}

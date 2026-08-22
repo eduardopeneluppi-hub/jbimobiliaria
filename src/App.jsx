@@ -9,6 +9,7 @@ import PropertyGrid from './components/PropertyGrid'
 import CtaBanner from './components/CtaBanner'
 import ContactPill from './components/ContactPill'
 import { cities, cityNames } from './data/locations'
+import { properties } from './data/properties'
 import { normalize } from './utils/text'
 
 function App() {
@@ -16,10 +17,27 @@ function App() {
   const [city, setCity] = useState(cityNames[0])
   const [bairro, setBairro] = useState(cities[cityNames[0]][0])
   const [search, setSearch] = useState('')
+  const [category, setCategory] = useState(null)
 
   function handleChangeCity(newCity) {
     setCity(newCity)
     setBairro(cities[newCity][0])
+  }
+
+  function handleSelectCategory(newCategory) {
+    setCategory(newCategory)
+    if (!newCategory) return
+
+    const hasMatchHere = properties.some(
+      (p) => p.city === city && p.bairro === bairro && p.type === newCategory
+    )
+    if (!hasMatchHere) {
+      const match = properties.find((p) => p.type === newCategory)
+      if (match) {
+        setCity(match.city)
+        setBairro(match.bairro)
+      }
+    }
   }
 
   useEffect(() => {
@@ -52,7 +70,7 @@ function App() {
         <>
           <Navbar />
           <Carousel />
-          <Categories />
+          <Categories selected={category} onSelect={handleSelectCategory} />
           <LocationFilter
             city={city}
             bairro={bairro}
@@ -60,7 +78,7 @@ function App() {
             onChangeBairro={setBairro}
           />
           <SearchBox value={search} onChange={setSearch} />
-          <PropertyGrid city={city} bairro={bairro} search={search} />
+          <PropertyGrid city={city} bairro={bairro} search={search} category={category} />
           <CtaBanner />
           <ContactPill />
         </>
