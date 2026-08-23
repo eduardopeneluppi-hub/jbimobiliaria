@@ -2,8 +2,7 @@ import { useState } from 'react'
 import logo from '../assets/logo-icon.png'
 import { buildWhatsappLink, WHATSAPP_NUMBER } from '../utils/whatsapp'
 
-const ADDRESS = 'Rua Argentina, 190, Cidade Vista Verde, São José dos Campos SP, 12223-000, Brasil'
-const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`
+const MAPS_URL = 'https://maps.app.goo.gl/PPqjcvJAhvp8Eq899'
 const PHONE_DISPLAY = `(${WHATSAPP_NUMBER.slice(2, 4)}) ${WHATSAPP_NUMBER.slice(4, 9)}-${WHATSAPP_NUMBER.slice(9)}`
 
 const phoneIcon = (
