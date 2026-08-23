@@ -144,12 +144,12 @@ export default function PropertyGrid({ city, bairro, search = '', category = nul
                     <div className="relative">
                       <h3 className="font-semibold text-neutral-900">{p.title}</h3>
                       <p className="mt-2 text-lg font-bold text-neutral-900">{p.price}</p>
-                      <div className="mt-3 flex flex-wrap items-center justify-between gap-2 pt-3">
-                        <div className="flex items-center gap-4 text-xs text-neutral-500">
-                          {p.beds > 0 && <FeatureIcon icon={bedIcon} value={p.beds} label="quartos" />}
-                          {p.baths > 0 && <FeatureIcon icon={bathIcon} value={p.baths} label="banheiros" />}
-                          <FeatureIcon icon={areaIcon} value={`${p.area}m²`} label="" />
-                        </div>
+                      <div className="mt-3 flex items-center gap-4 pt-3 text-xs text-neutral-500">
+                        {p.beds > 0 && <FeatureIcon icon={bedIcon} value={p.beds} label="quartos" />}
+                        {p.baths > 0 && <FeatureIcon icon={bathIcon} value={p.baths} label="banheiros" />}
+                        <FeatureIcon icon={areaIcon} value={`${p.area}m²`} label="" />
+                      </div>
+                      <div className="mt-3 flex justify-end">
                         <span className="rounded-full border border-white/60 bg-white/40 px-3 py-1 text-[11px] font-medium text-neutral-700 shadow-sm backdrop-blur-md">
                           Clique para ver mais
                         </span>
