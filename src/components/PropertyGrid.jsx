@@ -58,7 +58,7 @@ const categoryLabels = {
   terreno: 'terrenos',
 }
 
-export default function PropertyGrid({ city, bairro, search = '', category = null }) {
+export default function PropertyGrid({ city, bairro, search = '', category = null, onSelectLocation }) {
   const query = normalize(search.trim())
   const isLocationMatch = query && (normalize(bairro).includes(query) || normalize(city).includes(query))
   const filtered = properties.filter((p) => {
@@ -68,6 +68,17 @@ export default function PropertyGrid({ city, bairro, search = '', category = nul
     return normalize(p.title).includes(query) || normalize(p.description).includes(query)
   })
   const [selected, setSelected] = useState(null)
+
+  const elsewhere =
+    category && !query
+      ? [
+          ...new Map(
+            properties
+              .filter((p) => p.type === category && (p.city !== city || p.bairro !== bairro))
+              .map((p) => [`${p.city}-${p.bairro}`, { city: p.city, bairro: p.bairro }])
+          ).values(),
+        ]
+      : []
 
   return (
     <section className="mx-auto max-w-6xl px-4 pb-1 sm:pb-6">
@@ -80,12 +91,40 @@ export default function PropertyGrid({ city, bairro, search = '', category = nul
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           {filtered.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-neutral-200 py-16 text-center text-neutral-500">
-              {query
-                ? `Nenhum imóvel encontrado para "${search}" em ${bairro}.`
-                : category
-                ? `Ainda não temos ${categoryLabels[category]} em ${bairro}, ${city}.`
-                : `Nenhum imóvel encontrado em ${bairro} ainda. Volte em breve!`}
+            <div className="rounded-2xl border border-dashed border-neutral-200 px-6 py-12 text-center text-neutral-500">
+              <p>
+                {query
+                  ? `Nenhum imóvel encontrado para "${search}" em ${bairro}.`
+                  : category
+                  ? `Ainda não temos ${categoryLabels[category]} em ${bairro}, ${city}.`
+                  : `Nenhum imóvel encontrado em ${bairro} ainda. Volte em breve!`}
+              </p>
+
+              {elsewhere.length > 0 && (
+                <div className="mx-auto mt-6 max-w-sm">
+                  <p className="text-sm font-semibold text-neutral-700">
+                    Temos disponível em:
+                  </p>
+                  <ul className="mt-3 space-y-2">
+                    {elsewhere.map((loc) => (
+                      <li
+                        key={`${loc.city}-${loc.bairro}`}
+                        className="flex items-center justify-between gap-3 rounded-xl border border-neutral-200 bg-white px-4 py-2.5"
+                      >
+                        <span className="text-sm text-neutral-800">
+                          {loc.bairro}, {loc.city}
+                        </span>
+                        <button
+                          onClick={() => onSelectLocation?.(loc.city, loc.bairro)}
+                          className="shrink-0 rounded-full bg-orange-500 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-orange-400"
+                        >
+                          Visite agora
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -23,6 +23,11 @@ function App() {
     setBairro(cities[newCity][0])
   }
 
+  function handleSelectLocation(newCity, newBairro) {
+    setCity(newCity)
+    setBairro(newBairro)
+  }
+
   useEffect(() => {
     const query = normalize(search.trim())
     if (query.length < 3) return
@@ -61,7 +66,13 @@ function App() {
             onChangeBairro={setBairro}
           />
           <SearchBox value={search} onChange={setSearch} />
-          <PropertyGrid city={city} bairro={bairro} search={search} category={category} />
+          <PropertyGrid
+            city={city}
+            bairro={bairro}
+            search={search}
+            category={category}
+            onSelectLocation={handleSelectLocation}
+          />
           <CtaBanner />
           <ContactPill />
         </>
