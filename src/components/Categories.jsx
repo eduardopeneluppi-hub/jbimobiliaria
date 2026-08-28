@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import iconPredio from '../assets/categories/icon-predio.png'
 import iconCasa from '../assets/categories/icon-casa.png'
 import iconTerreno from '../assets/categories/icon-terreno.png'
+import GalleryModal from './GalleryModal'
 
 const categories = [
   { id: 'predio', label: 'Prédio', image: iconPredio },
@@ -18,6 +19,13 @@ const checkIcon = (
 
 export default function Categories() {
   const [selected, setSelected] = useState(null)
+  const [galleryOpen, setGalleryOpen] = useState(false)
+
+  function handleClick(c) {
+    const isSelected = selected === c.id
+    setSelected(isSelected ? null : c.id)
+    if (c.id === 'casa' && !isSelected) setGalleryOpen(true)
+  }
 
   return (
     <section className="mx-auto max-w-3xl px-4 pb-4 pt-2">
@@ -27,7 +35,7 @@ export default function Categories() {
           return (
             <button
               key={c.id}
-              onClick={() => setSelected(isSelected ? null : c.id)}
+              onClick={() => handleClick(c)}
               className="flex flex-col items-center gap-2"
             >
               <motion.div
@@ -69,6 +77,10 @@ export default function Categories() {
           )
         })}
       </div>
+
+      <AnimatePresence>
+        {galleryOpen && <GalleryModal onClose={() => setGalleryOpen(false)} />}
+      </AnimatePresence>
     </section>
   )
 }
