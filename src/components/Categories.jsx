@@ -18,8 +18,8 @@ const checkIcon = (
 )
 
 export default function Categories() {
-  const [selected, setSelected] = useState(null)
-  const [galleryOpen, setGalleryOpen] = useState(false)
+  const [selected, setSelected] = useState('casa')
+  const [galleryOpen, setGalleryOpen] = useState(true)
 
   function handleClick(c) {
     const isSelected = selected === c.id
