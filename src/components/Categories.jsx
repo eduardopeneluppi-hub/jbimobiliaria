@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import iconPredio from '../assets/categories/icon-predio.png'
 import iconCasa from '../assets/categories/icon-casa.png'
@@ -15,7 +16,9 @@ const checkIcon = (
   </svg>
 )
 
-export default function Categories({ selected, onSelect }) {
+export default function Categories() {
+  const [selected, setSelected] = useState(null)
+
   return (
     <section className="mx-auto max-w-3xl px-4 pb-4 pt-2">
       <div className="grid grid-cols-3 gap-4 sm:gap-8">
@@ -24,7 +27,7 @@ export default function Categories({ selected, onSelect }) {
           return (
             <button
               key={c.id}
-              onClick={() => onSelect(isSelected ? null : c.id)}
+              onClick={() => setSelected(isSelected ? null : c.id)}
               className="flex flex-col items-center gap-2"
             >
               <motion.div
