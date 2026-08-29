@@ -3,12 +3,13 @@ import { AnimatePresence, motion } from 'framer-motion'
 import iconPredio from '../assets/categories/icon-predio.png'
 import iconCasa from '../assets/categories/icon-casa.png'
 import iconTerreno from '../assets/categories/icon-terreno.png'
-import GalleryModal from './GalleryModal'
+import photoPredio from '../assets/gallery/predio-gallery-1.jpg'
+import photoCasa from '../assets/gallery/casa-gallery-1.jpg'
 
 const categories = [
-  { id: 'predio', label: 'Prédio', image: iconPredio },
-  { id: 'casa', label: 'Casa', image: iconCasa },
-  { id: 'terreno', label: 'Terreno', image: iconTerreno },
+  { id: 'predio', label: 'Prédio', image: iconPredio, photo: photoPredio },
+  { id: 'casa', label: 'Casa', image: iconCasa, photo: photoCasa },
+  { id: 'terreno', label: 'Terreno', image: iconTerreno, photo: null },
 ]
 
 const checkIcon = (
@@ -19,13 +20,7 @@ const checkIcon = (
 
 export default function Categories() {
   const [selected, setSelected] = useState('casa')
-  const [galleryOpen, setGalleryOpen] = useState(true)
-
-  function handleClick(c) {
-    const isSelected = selected === c.id
-    setSelected(isSelected ? null : c.id)
-    if (c.id === 'casa' && !isSelected) setGalleryOpen(true)
-  }
+  const active = categories.find((c) => c.id === selected)
 
   return (
     <section className="mx-auto max-w-3xl px-4 pb-4 pt-2">
@@ -35,7 +30,7 @@ export default function Categories() {
           return (
             <button
               key={c.id}
-              onClick={() => handleClick(c)}
+              onClick={() => setSelected(c.id)}
               className="flex flex-col items-center gap-2"
             >
               <motion.div
@@ -78,8 +73,26 @@ export default function Categories() {
         })}
       </div>
 
-      <AnimatePresence>
-        {galleryOpen && <GalleryModal onClose={() => setGalleryOpen(false)} />}
+      <AnimatePresence mode="wait">
+        {active?.photo && (
+          <motion.div
+            key={active.id}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="relative mx-auto mt-6 max-w-xs overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-lg">
+              <img
+                src={active.photo}
+                alt={active.label}
+                className="w-full select-none object-contain"
+                draggable={false}
+              />
+            </div>
+          </motion.div>
+        )}
       </AnimatePresence>
     </section>
   )
