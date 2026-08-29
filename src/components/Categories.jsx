@@ -21,7 +21,16 @@ const checkIcon = (
 
 export default function Categories() {
   const [selected, setSelected] = useState('casa')
+  const [direction, setDirection] = useState(1)
   const active = categories.find((c) => c.id === selected)
+
+  function handleSelect(id) {
+    if (id === selected) return
+    const from = categories.findIndex((c) => c.id === selected)
+    const to = categories.findIndex((c) => c.id === id)
+    setDirection(to > from ? 1 : -1)
+    setSelected(id)
+  }
 
   return (
     <section className="mx-auto max-w-3xl px-4 pb-4 pt-2">
@@ -31,7 +40,7 @@ export default function Categories() {
           return (
             <button
               key={c.id}
-              onClick={() => setSelected(c.id)}
+              onClick={() => handleSelect(c.id)}
               className="flex flex-col items-center gap-2"
             >
               <motion.div
@@ -74,27 +83,24 @@ export default function Categories() {
         })}
       </div>
 
-      <AnimatePresence mode="wait">
-        {active?.photo && (
-          <motion.div
-            key={active.id}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="relative mx-auto mt-6 max-w-xs overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-lg">
-              <img
-                src={active.photo}
-                alt={active.label}
-                className="w-full select-none object-contain"
-                draggable={false}
-              />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {active?.photo && (
+        <div className="relative mx-auto mt-6 max-w-xs overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-lg">
+          <AnimatePresence initial={false} custom={direction} mode="popLayout">
+            <motion.img
+              key={active.id}
+              src={active.photo}
+              alt={active.label}
+              custom={direction}
+              initial={{ x: direction > 0 ? 80 : -80, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: direction > 0 ? -80 : 80, opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="w-full select-none object-contain"
+              draggable={false}
+            />
+          </AnimatePresence>
+        </div>
+      )}
     </section>
   )
 }
