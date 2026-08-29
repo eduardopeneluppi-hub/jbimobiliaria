@@ -5,11 +5,12 @@ import iconCasa from '../assets/categories/icon-casa.png'
 import iconTerreno from '../assets/categories/icon-terreno.png'
 import photoPredio from '../assets/gallery/predio-gallery-1.jpg'
 import photoCasa from '../assets/gallery/casa-gallery-1.jpg'
+import photoTerreno from '../assets/gallery/terreno-gallery-1.jpg'
 
 const categories = [
   { id: 'predio', label: 'Prédio', image: iconPredio, photo: photoPredio },
   { id: 'casa', label: 'Casa', image: iconCasa, photo: photoCasa },
-  { id: 'terreno', label: 'Terreno', image: iconTerreno, photo: null },
+  { id: 'terreno', label: 'Terreno', image: iconTerreno, photo: photoTerreno },
 ]
 
 const checkIcon = (
