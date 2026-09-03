@@ -9,7 +9,8 @@ html {
   scroll-behavior: smooth;
 }
 
-#contato {
+#contato,
+#imoveis {
   scroll-margin-top: 96px;
 }
 

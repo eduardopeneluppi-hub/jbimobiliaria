@@ -44,7 +44,7 @@ export default function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  onClick={l.href === '#contato' ? scrollToId('contato') : undefined}
+                  onClick={scrollToId(l.href.slice(1))}
                   className="transition-colors hover:text-orange-400"
                 >
                   {l.label}
@@ -98,7 +98,7 @@ export default function Navbar() {
                       href={l.href}
                       onClick={(e) => {
                         setOpen(false)
-                        if (l.href === '#contato') scrollToId('contato')(e)
+                        scrollToId(l.href.slice(1))(e)
                       }}
                       className="block rounded-xl px-3 py-2 text-white/90 transition-colors hover:bg-white/10"
                     >

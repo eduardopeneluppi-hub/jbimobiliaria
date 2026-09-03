@@ -41,6 +41,7 @@ export default function Categories() {
 
   return (
     <motion.section
+      id="imoveis"
       initial={{ opacity: 0, y: 28 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
