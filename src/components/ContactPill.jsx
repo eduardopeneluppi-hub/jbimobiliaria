@@ -48,7 +48,12 @@ export default function ContactPill() {
         />
 
         <div className="relative">
-          <h2 className="pt-1 text-3xl font-black leading-normal tracking-tight text-neutral-900">DÚVIDAS?</h2>
+          <h2
+            className="pt-1 text-center text-3xl uppercase leading-normal tracking-tight text-neutral-900"
+            style={{ fontFamily: "'Archivo Black', sans-serif" }}
+          >
+            DÚVIDAS?
+          </h2>
 
           <div className="mt-6 space-y-4">
             <a
