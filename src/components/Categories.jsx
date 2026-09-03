@@ -99,10 +99,10 @@ export default function Categories() {
                 src={active.photo}
                 alt={active.label}
                 custom={direction}
-                initial={{ x: direction > 0 ? 80 : -80, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: direction > 0 ? -80 : 80, opacity: 0 }}
-                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ x: direction > 0 ? '100%' : '-100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: direction > 0 ? '-100%' : '100%' }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="w-full select-none object-contain"
                 draggable={false}
               />
