@@ -40,7 +40,12 @@ export default function Categories() {
   }
 
   return (
-    <section className="mx-auto max-w-3xl px-4 pb-4 pt-2">
+    <motion.section
+      initial={{ opacity: 0, y: 28 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+      className="mx-auto max-w-3xl px-4 pb-4 pt-2"
+    >
       <div className="grid grid-cols-3 gap-4 sm:gap-8">
         {categories.map((c) => {
           const isSelected = selected === c.id
@@ -120,6 +125,6 @@ export default function Categories() {
           </a>
         </div>
       )}
-    </section>
+    </motion.section>
   )
 }

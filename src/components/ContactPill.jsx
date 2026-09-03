@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import logo from '../assets/logo-icon.png'
 import { buildWhatsappLink, WHATSAPP_NUMBER } from '../utils/whatsapp'
 
@@ -30,7 +31,14 @@ export default function ContactPill() {
   )
 
   return (
-    <section id="contato" className="relative mx-auto max-w-sm px-4 pb-24 mt-2 sm:mt-12">
+    <motion.section
+      id="contato"
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      className="relative mx-auto max-w-sm px-4 pb-24 mt-2 sm:mt-12"
+    >
       <div className="relative overflow-hidden rounded-[2.5rem] border border-neutral-200 bg-white p-8 shadow-xl">
         <img
           src={logo}
@@ -91,6 +99,6 @@ export default function ContactPill() {
           </a>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
