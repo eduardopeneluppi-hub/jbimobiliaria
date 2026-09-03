@@ -92,7 +92,7 @@ export default function Categories() {
 
       {active?.photo && (
         <div className="mx-auto max-w-xs">
-          <div className="relative mt-6 overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-lg">
+          <div className="relative mt-6 aspect-[640/823] overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-lg">
             <AnimatePresence initial={false} custom={direction} mode="popLayout">
               <motion.img
                 key={active.id}
@@ -103,7 +103,7 @@ export default function Categories() {
                 animate={{ x: 0 }}
                 exit={{ x: direction > 0 ? '-100%' : '100%' }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="w-full select-none object-contain"
+                className="absolute inset-0 h-full w-full select-none object-contain"
                 draggable={false}
               />
             </AnimatePresence>
