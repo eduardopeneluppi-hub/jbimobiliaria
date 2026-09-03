@@ -10,7 +10,8 @@ function App() {
   const [introDone, setIntroDone] = useState(false)
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
+      <div className="pattern-bg" />
       {!introDone && <Intro onFinish={() => setIntroDone(true)} />}
       {introDone && (
         <>

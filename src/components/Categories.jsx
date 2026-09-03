@@ -80,7 +80,7 @@ export default function Categories() {
               </motion.div>
               <span
                 className={`text-sm font-semibold transition-colors sm:text-base ${
-                  isSelected ? 'text-orange-600' : 'text-neutral-800'
+                  isSelected ? 'text-orange-400' : 'text-white'
                 }`}
               >
                 {c.label}

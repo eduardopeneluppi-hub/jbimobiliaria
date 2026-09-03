@@ -26,7 +26,7 @@ export default function Carousel() {
   })
 
   return (
-    <section className="w-full bg-neutral-50 pb-16 pt-28 sm:pt-32">
+    <section className="w-full pb-16 pt-28 sm:pt-32">
       <div
         className="overflow-hidden"
         style={{
