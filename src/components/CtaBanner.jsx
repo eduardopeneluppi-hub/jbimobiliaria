@@ -3,7 +3,7 @@ import { buildWhatsappLink } from '../utils/whatsapp'
 
 export default function CtaBanner() {
   return (
-    <section className="mx-auto max-w-5xl px-4 pb-6">
+    <section className="mx-auto max-w-5xl px-1 pb-6 sm:px-4">
       <a
         href={buildWhatsappLink('Olá! Quero falar com a JB Imóveis.')}
         target="_blank"

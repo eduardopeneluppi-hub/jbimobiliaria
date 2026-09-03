@@ -92,7 +92,7 @@ export default function Categories() {
 
       {active?.photo && (
         <div className="mx-auto max-w-xs">
-          <div className="relative mt-6 aspect-[640/823] overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-lg">
+          <div className="relative mt-6 aspect-[640/823] overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-lg backdrop-blur-sm">
             <AnimatePresence initial={false} custom={direction} mode="popLayout">
               <motion.img
                 key={active.id}
