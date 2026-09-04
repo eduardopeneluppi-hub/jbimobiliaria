@@ -35,6 +35,13 @@ const starIcon = (
   </svg>
 )
 
+const arrowIcon = (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M5 12h14" />
+    <path d="m13 6 6 6-6 6" />
+  </svg>
+)
+
 export default function GoogleReviewCard() {
   return (
     <motion.section
@@ -44,12 +51,7 @@ export default function GoogleReviewCard() {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="relative mx-auto max-w-sm px-4 pt-2 sm:pt-6"
     >
-      <a
-        href={REVIEW_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex flex-col items-center gap-3 rounded-[2.5rem] border border-neutral-200 bg-white p-8 text-center shadow-xl transition-transform hover:scale-[1.02]"
-      >
+      <div className="flex flex-col items-center gap-3 rounded-[2.5rem] border border-neutral-200 bg-white p-8 text-center shadow-xl">
         <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-md ring-1 ring-neutral-100">
           {googleLogo}
         </span>
@@ -70,7 +72,17 @@ export default function GoogleReviewCard() {
         <p className="text-sm text-neutral-500">
           Deixe sua avaliação no Google e ajude a JB Imóveis a crescer
         </p>
-      </a>
+
+        <a
+          href={REVIEW_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-2 flex items-center gap-2 rounded-full bg-[#4285F4] px-6 py-3 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#3367d6]"
+        >
+          Avaliar agora
+          {arrowIcon}
+        </a>
+      </div>
     </motion.section>
   )
 }
