@@ -51,8 +51,17 @@ export default function GoogleReviewCard() {
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="relative mx-auto max-w-sm px-4 pt-2 sm:pt-6 lg:max-w-4xl"
       >
-        <div className="flex flex-col items-center gap-3 rounded-[2.5rem] border border-neutral-200 bg-white p-8 text-center shadow-xl lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:p-10 lg:text-left">
-          <div className="flex flex-col items-center gap-3 lg:flex-row lg:items-center lg:gap-6">
+        <div className="relative flex flex-col items-center gap-3 overflow-hidden rounded-[2.5rem] border border-neutral-200 bg-white p-8 text-center shadow-xl lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:p-10 lg:text-left">
+          <div
+            className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-orange-400 opacity-20 blur-3xl"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-orange-500 opacity-[0.18] blur-3xl"
+            aria-hidden="true"
+          />
+
+          <div className="relative z-10 flex flex-col items-center gap-3 lg:flex-row lg:items-center lg:gap-6">
             <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white shadow-md ring-1 ring-neutral-100">
               {googleLogo}
             </span>
@@ -81,7 +90,7 @@ export default function GoogleReviewCard() {
             href={REVIEW_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 flex shrink-0 items-center gap-2 rounded-full bg-[#4285F4] px-6 py-3 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#3367d6] lg:mt-0"
+            className="relative z-10 mt-2 flex shrink-0 items-center gap-2 rounded-full bg-[#4285F4] px-6 py-3 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#3367d6] lg:mt-0"
           >
             Avaliar agora
             {arrowIcon}
