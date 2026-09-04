@@ -44,13 +44,14 @@ const arrowIcon = (
 
 export default function GoogleReviewCard() {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="relative mx-auto max-w-sm px-4 pt-2 sm:pt-6"
-    >
+    <div className="-translate-y-[4%] sm:translate-y-0">
+      <motion.section
+        initial={{ opacity: 0, y: 32 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="relative mx-auto max-w-sm px-4 pt-2 sm:pt-6"
+      >
       <div className="flex flex-col items-center gap-3 rounded-[2.5rem] border border-neutral-200 bg-white p-8 text-center shadow-xl">
         <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-md ring-1 ring-neutral-100">
           {googleLogo}
@@ -83,6 +84,7 @@ export default function GoogleReviewCard() {
           {arrowIcon}
         </a>
       </div>
-    </motion.section>
+      </motion.section>
+    </div>
   )
 }
