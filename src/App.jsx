@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Carousel from './components/Carousel'
 import Categories from './components/Categories'
 import CtaBanner from './components/CtaBanner'
+import GoogleReviewCard from './components/GoogleReviewCard'
 import ContactPill from './components/ContactPill'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Carousel />
           <Categories />
           <CtaBanner />
+          <GoogleReviewCard />
           <ContactPill />
         </>
       )}
