@@ -37,9 +37,9 @@ export default function ContactPill() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="relative mx-auto max-w-sm px-4 pb-24 mt-2 sm:mt-12"
+      className="relative mx-auto max-w-sm px-4 pb-24 mt-2 sm:mt-12 lg:max-w-4xl"
     >
-      <div className="relative overflow-hidden rounded-[2.5rem] border border-neutral-200 bg-white p-8 shadow-xl">
+      <div className="relative overflow-hidden rounded-[2.5rem] border border-neutral-200 bg-white p-8 shadow-xl lg:p-12">
         <img
           src={logo}
           alt=""
@@ -47,39 +47,41 @@ export default function ContactPill() {
           draggable={false}
         />
 
-        <div className="relative">
-          <h2
-            className="pt-1 text-center text-3xl uppercase leading-normal tracking-tight text-neutral-900"
-            style={{ fontFamily: "'Archivo Black', sans-serif" }}
-          >
-            DÚVIDAS?
-          </h2>
-
-          <div className="mt-6 space-y-4">
-            <a
-              href={`tel:+${WHATSAPP_NUMBER}`}
-              className="flex items-center gap-3 text-sm text-neutral-700 transition-colors hover:text-orange-600"
+        <div className="relative lg:grid lg:grid-cols-2 lg:gap-12">
+          <div>
+            <h2
+              className="pt-1 text-center text-3xl uppercase leading-normal tracking-tight text-neutral-900 lg:text-left lg:text-4xl"
+              style={{ fontFamily: "'Archivo Black', sans-serif" }}
             >
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange-50 text-orange-500">
-                {phoneIcon}
-              </span>
-              {PHONE_DISPLAY}
-            </a>
+              DÚVIDAS?
+            </h2>
 
-            <a
-              href={MAPS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-start gap-3 text-sm text-neutral-700 transition-colors hover:text-orange-600"
-            >
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange-50 text-orange-500">
-                {pinIcon}
-              </span>
-              <span>Rua Argentina, 190, Cidade Vista Verde, São José dos Campos - SP, 12223-000</span>
-            </a>
+            <div className="mt-6 space-y-4">
+              <a
+                href={`tel:+${WHATSAPP_NUMBER}`}
+                className="flex items-center gap-3 text-sm text-neutral-700 transition-colors hover:text-orange-600"
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange-50 text-orange-500">
+                  {phoneIcon}
+                </span>
+                {PHONE_DISPLAY}
+              </a>
+
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 text-sm text-neutral-700 transition-colors hover:text-orange-600"
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange-50 text-orange-500">
+                  {pinIcon}
+                </span>
+                <span>Rua Argentina, 190, Cidade Vista Verde, São José dos Campos - SP, 12223-000</span>
+              </a>
+            </div>
           </div>
 
-          <div className="mt-6">
+          <div className="mt-6 lg:mt-0 lg:flex lg:flex-col lg:justify-center">
             <label htmlFor="contact-message" className="mb-2 block text-xs font-semibold text-neutral-500">
               Sua mensagem
             </label>
@@ -91,17 +93,17 @@ export default function ContactPill() {
               rows={4}
               className="w-full resize-none rounded-2xl border border-neutral-200 bg-neutral-50 p-3 text-sm text-neutral-800 outline-none transition-colors focus:border-orange-400 focus:bg-white"
             />
-          </div>
 
-          <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-400"
-          >
-            {sendIcon}
-            Enviar no WhatsApp
-          </a>
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-400"
+            >
+              {sendIcon}
+              Enviar no WhatsApp
+            </a>
+          </div>
         </div>
       </div>
     </motion.section>

@@ -50,40 +50,44 @@ export default function GoogleReviewCard() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="relative mx-auto max-w-sm px-4 pt-2 sm:pt-6"
+        className="relative mx-auto max-w-sm px-4 pt-2 sm:pt-6 lg:max-w-4xl"
       >
-      <div className="flex flex-col items-center gap-3 rounded-[2.5rem] border border-neutral-200 bg-white p-8 text-center shadow-xl">
-        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-md ring-1 ring-neutral-100">
-          {googleLogo}
-        </span>
+        <div className="flex flex-col items-center gap-3 rounded-[2.5rem] border border-neutral-200 bg-white p-8 text-center shadow-xl lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:p-10 lg:text-left">
+          <div className="flex flex-col items-center gap-3 lg:flex-row lg:items-center lg:gap-6">
+            <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white shadow-md ring-1 ring-neutral-100">
+              {googleLogo}
+            </span>
 
-        <div className="flex gap-1">
-          {[0, 1, 2, 3, 4].map((i) => (
-            <span key={i}>{starIcon}</span>
-          ))}
+            <div className="flex flex-col items-center gap-2 lg:items-start">
+              <div className="flex gap-1">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <span key={i}>{starIcon}</span>
+                ))}
+              </div>
+
+              <h2
+                className="uppercase leading-tight tracking-tight text-neutral-900"
+                style={{ fontFamily: "'Archivo Black', sans-serif", fontSize: '1.75rem' }}
+              >
+                Nos avalie!
+              </h2>
+
+              <p className="text-sm text-neutral-500">
+                Deixe sua avaliação no Google e ajude a JB Imóveis a crescer
+              </p>
+            </div>
+          </div>
+
+          <a
+            href={REVIEW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 flex shrink-0 items-center gap-2 rounded-full bg-[#4285F4] px-6 py-3 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#3367d6] lg:mt-0"
+          >
+            Avaliar agora
+            {arrowIcon}
+          </a>
         </div>
-
-        <h2
-          className="uppercase leading-tight tracking-tight text-neutral-900"
-          style={{ fontFamily: "'Archivo Black', sans-serif", fontSize: '1.75rem' }}
-        >
-          Nos avalie!
-        </h2>
-
-        <p className="text-sm text-neutral-500">
-          Deixe sua avaliação no Google e ajude a JB Imóveis a crescer
-        </p>
-
-        <a
-          href={REVIEW_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-2 flex items-center gap-2 rounded-full bg-[#4285F4] px-6 py-3 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#3367d6]"
-        >
-          Avaliar agora
-          {arrowIcon}
-        </a>
-      </div>
       </motion.section>
     </div>
   )
