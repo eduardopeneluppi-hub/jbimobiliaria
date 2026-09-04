@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import logo from '../assets/logo-icon.png'
+import AboutModal from './AboutModal'
 
 const links = [
   { label: 'Início', href: '#inicio' },
@@ -18,6 +19,20 @@ function scrollToId(id) {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [aboutOpen, setAboutOpen] = useState(false)
+
+  function handleLinkClick(l) {
+    return (e) => {
+      if (l.href === '#sobre') {
+        e.preventDefault()
+        setOpen(false)
+        setAboutOpen(true)
+        return
+      }
+      setOpen(false)
+      scrollToId(l.href.slice(1))(e)
+    }
+  }
 
   return (
     <motion.div
@@ -44,7 +59,7 @@ export default function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  onClick={scrollToId(l.href.slice(1))}
+                  onClick={handleLinkClick(l)}
                   className="transition-colors hover:text-orange-400"
                 >
                   {l.label}
@@ -96,10 +111,7 @@ export default function Navbar() {
                   <li key={l.href}>
                     <a
                       href={l.href}
-                      onClick={(e) => {
-                        setOpen(false)
-                        scrollToId(l.href.slice(1))(e)
-                      }}
+                      onClick={handleLinkClick(l)}
                       className="block rounded-xl px-3 py-2 text-white/90 transition-colors hover:bg-white/10"
                     >
                       {l.label}
@@ -123,6 +135,10 @@ export default function Navbar() {
           )}
         </AnimatePresence>
       </motion.nav>
+
+      <AnimatePresence>
+        {aboutOpen && <AboutModal onClose={() => setAboutOpen(false)} />}
+      </AnimatePresence>
     </motion.div>
   )
 }
