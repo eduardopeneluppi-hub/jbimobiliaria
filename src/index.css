@@ -31,13 +31,7 @@ body {
   inset: 0;
   z-index: -1;
   overflow: hidden;
-  background: repeating-linear-gradient(
-    135deg,
-    #163862 0px,
-    #163862 60px,
-    #16386299 70px,
-    #2a5c94 130px
-  );
+  background: #163862;
 }
 
 @keyframes aurora-blob-1 {

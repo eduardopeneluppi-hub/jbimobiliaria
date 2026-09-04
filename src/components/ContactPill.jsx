@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import logo from '../assets/logo-icon.png'
-import { buildWhatsappLink, WHATSAPP_NUMBER } from '../utils/whatsapp'
+import { buildWhatsappLink, DUVIDAS_WHATSAPP_NUMBER } from '../utils/whatsapp'
 
 const MAPS_URL = 'https://maps.app.goo.gl/PPqjcvJAhvp8Eq899'
-const PHONE_DISPLAY = `(${WHATSAPP_NUMBER.slice(2, 4)}) ${WHATSAPP_NUMBER.slice(4, 9)}-${WHATSAPP_NUMBER.slice(9)}`
+const PHONE_DISPLAY = `(${DUVIDAS_WHATSAPP_NUMBER.slice(2, 4)}) ${DUVIDAS_WHATSAPP_NUMBER.slice(4, 9)}-${DUVIDAS_WHATSAPP_NUMBER.slice(9)}`
 
 const phoneIcon = (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -27,7 +27,8 @@ export default function ContactPill() {
   const [message, setMessage] = useState('')
 
   const whatsappHref = buildWhatsappLink(
-    message.trim() || 'Olá! Tenho uma dúvida sobre um imóvel.'
+    message.trim() || 'Olá! Tenho uma dúvida sobre um imóvel.',
+    DUVIDAS_WHATSAPP_NUMBER
   )
 
   return (
@@ -58,7 +59,7 @@ export default function ContactPill() {
 
             <div className="mt-6 space-y-4">
               <a
-                href={`tel:+${WHATSAPP_NUMBER}`}
+                href={`tel:+${DUVIDAS_WHATSAPP_NUMBER}`}
                 className="flex items-center gap-3 text-sm text-neutral-700 transition-colors hover:text-orange-600"
               >
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange-50 text-orange-500">
