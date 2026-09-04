@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 
-const REVIEW_URL =
-  'https://www.google.com/search?q=JB+IMOVEIS&oq=jb+imo&gs_lcrp=EgZjaHJvbWUqCAgBEEUYJxg7MgYIABBFGDkyCAgBEEUYJxg7MhAIAhAuGK8BGMcBGIAEGI4FMg0IAxAuGK8BGMcBGIAEMgcIBBAAGIAEMgcIBRAAGIAEMgcIBhAAGIAEMgcIBxAAGIAEMgcICBAAGIAEMgcICRAAGIAE0gEJNDk1MWowajE1qAIIsAIB8QVcW0PCsdUViQ&sourceid=chrome&source=chrome.rb&ie=UTF-8#lrd=0x94cc4b898070e98b:0x95c6c8c6106ce865,3,,,,'
+const REVIEW_URL = 'https://search.google.com/local/writereview?placeid=ChIJi-lwgIlLzJQRZehsEMbIxpU'
 
 const googleLogo = (
   <svg viewBox="0 0 48 48" width="36" height="36">
