@@ -6,6 +6,7 @@ import Categories from './components/Categories'
 import CtaBanner from './components/CtaBanner'
 import GoogleReviewCard from './components/GoogleReviewCard'
 import ContactPill from './components/ContactPill'
+import Footer from './components/Footer'
 
 function App() {
   const [introDone, setIntroDone] = useState(false)
@@ -22,6 +23,7 @@ function App() {
           <CtaBanner />
           <GoogleReviewCard />
           <ContactPill />
+          <Footer />
         </>
       )}
     </div>
